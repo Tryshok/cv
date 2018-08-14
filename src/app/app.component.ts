@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from './header/app.headerComponent';
+import { NavComponent } from './nav/app.NavComponent';
+import { ContentAreaComponent } from './contentArea/app.contentAreaComponent';
+import { FooterComponent } from './footer/app.FooterComponent';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +12,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'salut';
 }
