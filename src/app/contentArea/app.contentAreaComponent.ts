@@ -61,12 +61,108 @@ export class ContentAreaComponent {
     });
 
     window.onload = function() {
-      console.log(window);
       const ctx = document.getElementById('canvas');
+      const ctx2 = document.getElementById('canvas2');
       window.myChart = new Chart(ctx, {
         type: 'bubble',
         data: {
-          labels: ['Angular2', 'TypeScript', 'PHP', 'NativeScript'],
+          datasets: [{
+            label: ['MySQL'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['Microsoft SQL Server'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['Oracle'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['MongoDB'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['Talend (ETL)'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['Qlikview'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }]
+        },
+        options: {
+          showAllTooltips: true,
+          tooltips: {
+            bodyFontSize: 20,
+            callbacks: {
+              label: function (tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label; }
+                }
+          },
+          legend: {
+              display: false
+          },
+          scales: {
+              xAxes: [{
+                  gridLines: {
+                      color: 'rgba(0, 0, 0, 0)',
+                      drawBorder: false,
+                      display : false
+                  },
+                  ticks: {
+                      display : false,
+                      beginAtZero: true
+                  }
+              }],
+              yAxes: [{
+                  gridLines: {
+                      color: 'rgba(0, 0, 0, 0)',
+                      drawBorder: false,
+                      display : false
+                  },
+                  ticks: {
+                      display : false,
+                      beginAtZero: true
+                  },
+              }]
+          },
+          responsive: true,
+        }
+      });
+      window.myChart2 = new Chart(ctx2, {
+        type: 'bubble',
+        data: {
           datasets: [{
             label: ['Angular2'],
             backgroundColor: pastelColors().toString(),
@@ -86,6 +182,15 @@ export class ContentAreaComponent {
               r: 0,
             }]
           }, {
+            label: ['NativeScript'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
             label: ['PHP'],
             backgroundColor: pastelColors().toString(),
             borderWidth: 1,
@@ -95,7 +200,34 @@ export class ContentAreaComponent {
               r: 0,
             }]
           }, {
-            label: ['NativeScript'],
+            label: ['HTML5 / CSS3'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['.NET'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['JAVA'],
+            backgroundColor: pastelColors().toString(),
+            borderWidth: 1,
+            data: [{
+              x: randomScalingFactor(),
+              y: randomScalingFactor(),
+              r: 0,
+            }]
+          }, {
+            label: ['Bootstrap'],
             backgroundColor: pastelColors().toString(),
             borderWidth: 1,
             data: [{
@@ -108,6 +240,7 @@ export class ContentAreaComponent {
         options: {
           showAllTooltips: true,
           tooltips: {
+            bodyFontSize: 20,
             callbacks: {
               label: function (tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label; }
                 }
@@ -160,6 +293,19 @@ export class ContentAreaComponent {
       dataset.backgroundColor = '#' + (Math.round(Math.random() * 127) + 127).toString(16) + (Math.round(Math.random() * 127) + 127).toString(16) + (Math.round(Math.random() * 127) + 127).toString(16).toString();
       });
       window.myChart.update();
+
+      this.myChart2.data.datasets.forEach(function(dataset) {
+        dataset.data = dataset.data.map(function() {
+          return {
+            x: Math.round(Math.random() * 10),
+            y: Math.round(Math.random() * 10),
+            r: 0,
+          };
+        }),
+        // tslint:disable-next-line:max-line-length
+        dataset.backgroundColor = '#' + (Math.round(Math.random() * 127) + 127).toString(16) + (Math.round(Math.random() * 127) + 127).toString(16) + (Math.round(Math.random() * 127) + 127).toString(16).toString();
+        });
+        window.myChart2.update();
   }
 
 }
